@@ -1,21 +1,21 @@
 import google.generativeai as genai
 import PySimpleGUI as sg
-import Constantes
-import Config
+import constantes
+import config
 
 def main():
-    genai.configure(api_key=Constantes.CHAVE_API)
+    genai.configure(api_key=constantes.CHAVE_API)
 
-    modelo = Config.MODELO
+    modelo = config.MODELO
 
     chat = modelo.start_chat(history=[])
 
     def chat_loop():
-        treinamento = Constantes.TREINAMENTO
+        treinamento = constantes.TREINAMENTO
 
-        sg.theme(Constantes.TEMA_JANELA)
+        sg.theme(constantes.TEMA_JANELA)
 
-        layout = Constantes.LAYOUT_JANELA
+        layout = constantes.LAYOUT_JANELA
 
         janela = sg.Window('SISREQ_IA - Assistante Virtual', layout, resizable=True, size=(550, 425))
 
