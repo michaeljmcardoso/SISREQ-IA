@@ -17,7 +17,7 @@ def main():
 
         layout = constantes.LAYOUT_JANELA
 
-        janela = sg.Window('SISREQ_IA - Assistante Virtual', layout, resizable=True, size=(550, 425))
+        janela = sg.Window('SISREQ_IA', layout, resizable=True, size=(700, 510))
 
         while True:
             event, values = janela.read()
