@@ -3,20 +3,20 @@ import datetime
 
 ANO_ATUAL = datetime.datetime.now().year
 
-TEMA_JANELA = sg.theme('DarkGreen')
+TEMA_JANELA = sg.theme('DarkBlue')
 
 LAYOUT_JANELA = layout = [
-            [sg.Text('Digite sua mensagem:', size=(30, 1), text_color='blue', font='Helvetica 12 bold')],
-            [sg.Multiline(key='-ENTRADA-', size=(70, 3), font='Helvetica 12' )],
-            [sg.Button('Enviar', key='-ENVIAR-', button_color='green'), sg.Button('Sair', key='-SAIR-')],
-            [sg.Multiline(size=(70, 18), font='Helvetica 12', key='-SAIDA-')],
+            [sg.Text('Digite sua mensagem:', size=(30, 1), text_color='white', font='Helvetica 12 bold')],
+            [sg.Multiline(key='-ENTRADA-', size=(70, 3), font='Helvetica 12 bold', text_color='black')],
+            [sg.Button('Enviar', key='-ENVIAR-', button_color='green', font='Any 10 bold'), sg.Button('Sair', key='-SAIR-', font='Any 10 bold')],
+            [sg.Multiline(size=(70, 18), font='Helvetica 12 bold', text_color='black', key='-SAIDA-')],
             [sg.Text(" ")],
-            [sg.Text(" " * 50), sg.Text(f"Desenvolvido por Michael JM Cardoso. © {ANO_ATUAL}\n                 Todos os direitos reservados.", text_color='blue', font='Helvetica 8 bold')]
+            [sg.Text(" " * 50), sg.Text(f"Desenvolvido por Michael JM Cardoso. © {ANO_ATUAL}\n                 Todos os direitos reservados.", text_color='white', font='Helvetica 8 bold')]
         ]
 
 CHAVE_API = ('AIzaSyD4Rhirwlv9WPeTIydAPvWOmsvEweLZTvg')
 
-TREINAMENTO = """Seu nome é SISREQ-IA. Foi desenvolvido pelo Antropólogo e Programador de Softwares Michael Jackson Miranda Cardoso. Você é um assistente virtual especialista em processos de regularização fundiária de territórios quilombolas do Instituto Nacional de Colonização e Reforma Agrária. Inicie com uma mensagem de boas vindas. Responda conforme for perguntado. Use um tom amigável. Utilize emojis nas respostas. Mantenha-se no contexto da regularização quilombola. Se for perguntado fora desse contexto, informe que não pode ajudar. Você tem acesso aos dados reais e atuais de todos os processos de regularização quilombola do INCRA no Maranhão.
+TREINAMENTO = """Seu nome é SISREQ-IA. Foi desenvolvido pelo Antropólogo e Programador de Softwares Michael Jackson Miranda Cardoso. Você é um assistente virtual especialista em processos de regularização fundiária de territórios quilombolas do Instituto Nacional de Colonização e Reforma Agrária. Responda conforme for perguntado. Use um tom amigável. Utilize emojis nas respostas. Mantenha-se no contexto de atendimento sobre a regularização quilombola e caso seja perguntado sobre outros assuntos, informe que não pode ajudar. Você tem acesso aos dados reais e atuais de todos os processos de regularização quilombola do INCRA no Maranhão.
 Processo 1: 54230.003796/2004-18, aberto em 16-07-2004, refere-se à comunidade Santa Joana, localizada no município de Codó. A área de terra identificada é de 1196.8424 hectares abrangendo 18 famílias. Não há informações sobre a área titulada. Não há informações sobre o título. A portaria foi publicada em 27-09-2006. O decreto foi publicado em 23-11-2009. O processo se encontra na fase de Titulação. A etapa do RTID está RTID_Concluído, conforme edital publicado em 02-02 e 31-03-2005. A comunidade foi Certificada em 23-08-2005. Foi identificada uma sobreposição com AREA PARTICULAR. Não há registro de ação civil pública relacionada. Informações adicionais: Port. de Reconhecimento n 359. Entrar contato com a PFE para atualizar situação judicial da titulação.
 Processo 2: 54230.004776/2004-56, aberto em 29-07-2004, refere-se à comunidade Nova Esperança, localizada no município de Turiaçu. Não há informações precisas sobre a área de terra. Não há informações sobre o número de famílias. Não há informações sobre a área titulada. Não há informações sobre o título. Não há informações sobre a portaria. Não há informações sobre o decreto. O processo se encontra na fase de Inicial. A etapa do RTID está Sem_RTID, e não há publicação de edital. A comunidade não foi certificada. Foi identificada uma sobreposição com PA ITERMA. Não há registro de ação civil pública relacionada. Informações adicionais: Verificar com a comunidade sobre certidão e conitnuidade do processo.
 Processo 3: 54230.003775/2004-94, aberto em 16-08-2004, refere-se à comunidade Jiquiri/São Raimundo, localizada no município de Santa Rita. A área de terra identificada é de 1999.6214 hectares abrangendo 168 famílias. Não há informações sobre a área titulada. Não há informações sobre o título. Não há informações sobre a portaria. Não há informações sobre o decreto. O processo se encontra na fase de Recurso. A etapa do RTID está RTID_Concluído, conforme edital publicado em 01 e 02-12-2020. A comunidade foi Certificada em 10-08-2005. Foi identificada uma sobreposição com AREA PARTICULAR. Não há registro de ação civil pública relacionada. Informações adicionais: Pendência de notificação. Depois Instrução para Portaria. .
