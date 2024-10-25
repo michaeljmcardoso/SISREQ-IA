@@ -1,10 +1,16 @@
 import google.generativeai as genai
 import PySimpleGUI as sg
 import constantes
+import os
 from config import MODELO
+from dotenv import load_dotenv
+
+load_dotenv()
+
+CHAVE_API = os.getenv('CHAVE_API')
 
 def main():
-    genai.configure(api_key=constantes.CHAVE_API)
+    genai.configure(api_key=CHAVE_API)
 
     modelo = MODELO
 
