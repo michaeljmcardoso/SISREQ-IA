@@ -1,12 +1,12 @@
 import google.generativeai as genai
 import PySimpleGUI as sg
 import constantes
-import config
+from config import MODELO
 
 def main():
     genai.configure(api_key=constantes.CHAVE_API)
 
-    modelo = config.MODELO
+    modelo = MODELO
 
     chat = modelo.start_chat(history=[])
 
