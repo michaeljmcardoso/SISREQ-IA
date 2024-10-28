@@ -1,6 +1,6 @@
 import os
 import time
-import pandas as pd  # Adicione esta importação
+import pandas as pd
 import google.generativeai as genai
 from tkinter import Tk, filedialog
 
@@ -79,7 +79,7 @@ else:
     chat_session = model.start_chat(history=[{"role": "user", "parts": [files[0]]}])
 
     # Loop de interação com o usuário
-    print("Assistente iniciado! Digite sua pergunta sobre o arquivo.")
+    print("Assistente iniciado e pronto para interação!")
     while True:
         user_input = input("Pergunta: ")
         if user_input.lower() in ["sair", "exit", "quit"]:
