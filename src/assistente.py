@@ -76,7 +76,7 @@ if uploaded_file and not st.session_state["upload_successful"]:
     placeholder = st.empty()  # Cria um espaço para a mensagem temporária
 
     with placeholder:
-        st.info("Arquivo carregado com sucesso. Iniciando upload para o Gemini...")
+        st.info("Arquivo carregado com sucesso. Iniciando upload...")
 
     gemini_file = upload_to_gemini(csv_path, mime_type="text/csv")
     
@@ -109,5 +109,14 @@ elif st.session_state["upload_successful"]:
     if user_input:
         response = chat_session.send_message(user_input)
         st.write("Resposta:", response.text)
+
+        # Botão para baixar a resposta
+        response_text = response.text
+        st.download_button(
+            label="Baixar resposta",
+            data=response_text,
+            file_name="resposta.txt",
+            mime="text/plain"
+        )
 else:
     st.warning("Por favor, carregue um arquivo para começar.")
