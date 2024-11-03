@@ -73,42 +73,33 @@ uploaded_file = st.file_uploader("Selecione o arquivo Excel (.xlsx)", type=["xls
 
 if uploaded_file and not st.session_state["upload_successful"]:
     csv_path = convert_excel_to_csv(uploaded_file)
-    placeholder = st.empty()  # Cria um espaço para a mensagem temporária
-
-    with placeholder:
-        st.info("Arquivo carregado com sucesso. Iniciando upload...")
+    st.info("Arquivo carregado com sucesso. Iniciando upload...")
 
     gemini_file = upload_to_gemini(csv_path, mime_type="text/csv")
     
     if gemini_file:
         st.session_state["files"] = [gemini_file]
         if wait_for_files_active(st.session_state["files"]):
-            # Remove a mensagem temporária e exibe a mensagem de sucesso apenas uma vez
-            time.sleep(2)
-            placeholder.empty()
             st.session_state["upload_successful"] = True
             st.success("Arquivo processado e pronto para interação!")
 
-            # Inicia a sessão de chat
-            chat_session = model.start_chat(history=[{"role": "user", "parts": [st.session_state["files"][0]]}])
-
-            # Loop de interação com o usuário
-            user_input = st.text_input("Digite sua pergunta:")
-            if user_input:
-                response = chat_session.send_message(user_input)
-                st.write("Resposta:", response.text)
-        else:
-            st.error("Falha ao processar o arquivo. Verifique e tente novamente.")
-    else:
-        st.error("Falha no upload do arquivo para o Gemini.")
-elif st.session_state["upload_successful"]:
-    st.success("Arquivo processado e pronto para interação!")
-    # Recupera a sessão de chat caso o arquivo já tenha sido processado
+# Exibe a caixa de input e a interação do chat somente após o upload e processamento bem-sucedidos
+if st.session_state["upload_successful"]:
+    # Inicia a sessão de chat
     chat_session = model.start_chat(history=[{"role": "user", "parts": [st.session_state["files"][0]]}])
     user_input = st.text_input("Digite sua pergunta:")
+    
     if user_input:
         response = chat_session.send_message(user_input)
         st.write("Resposta:", response.text)
 
+        # Botão para baixar a resposta
+        st.download_button(
+            label="Baixar resposta",
+            data=response.text,
+            file_name="resposta.txt",
+            mime="text/plain"
+        )
 else:
-    st.warning("Por favor, carregue um arquivo para começar.")
+    if not st.session_state["upload_successful"]:
+        st.warning("Por favor, carregue um arquivo para começar.")
