@@ -1,5 +1,6 @@
 pandas
 dotenv
+openpyxl
 streamlit
 google-generativeai
 
