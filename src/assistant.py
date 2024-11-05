@@ -4,7 +4,11 @@ import pandas as pd
 import streamlit as st
 import google.generativeai as genai
 
+from dotenv import load_dotenv
 
+load_dotenv()
+
+CHAVE_API = os.getenv('CHAVE_API')
 
 # Configuração da API Gemini
 genai.configure(api_key=os.environ["CHAVE_API"])
