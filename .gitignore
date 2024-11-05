@@ -163,4 +163,5 @@ cython_debug/
 
 /ChatBot_Gemini_Notebook.ipynb
 /ChatBot_Gemini.py
-/temp_converted_file.csv
+temp_converted_file.csv
+sisreq.py

@@ -73,7 +73,8 @@ if "files" not in st.session_state:
     st.session_state["files"] = None
 
 # Interface com Streamlit
-st.title("Assistente de Regularização de Territórios Quilombolas")
+st.markdown('<h1 style="color: blue;">Assistente de Regularização de Territórios Quilombolas</h1>', unsafe_allow_html=True)
+
 
 uploaded_file = st.file_uploader("Selecione o arquivo Excel (.xlsx)", type=["xlsx"])
 
